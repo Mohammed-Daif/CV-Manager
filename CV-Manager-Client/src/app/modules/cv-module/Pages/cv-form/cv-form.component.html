@@ -1,0 +1,183 @@
+<a routerLink="/cv"><button pButton pRipple type="button" icon="pi pi-step-backward-alt" class="p-button-rounded p-button-text"></button></a>
+
+<h2>CV Form</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input
+      pInputText
+      type="text"
+      id="name"
+      class="form-control"
+      placeholder="Name"
+      name="name"
+      formControlName="name"
+    />
+    <p-message
+      severity="error"
+      text="Name is required"
+      *ngIf="!form.controls['name'].valid && form.controls['name'].touched"
+    ></p-message>
+    <br />
+    <label for="fullName">Full Name</label>
+
+    <input
+      pInputText
+      type="text"
+      id="fullName"
+      class="form-control"
+      placeholder="fullName"
+      name="fullName"
+      formControlName="fullName"
+    />
+    <p-message
+      severity="error"
+      text="fullName is required"
+      *ngIf="
+        !form.controls['fullName'].valid && form.controls['fullName'].touched
+      "
+    ></p-message>
+    <br />
+    <label for="cityName">City Name</label>
+
+    <input
+      pInputText
+      type="text"
+      id="cityName"
+      class="form-control"
+      placeholder="cityName"
+      name="cityName"
+      formControlName="cityName"
+    />
+    <p-message
+      severity="error"
+      text="cityName is required"
+      *ngIf="
+        !form.controls['cityName'].valid && form.controls['cityName'].touched
+      "
+    ></p-message>
+    <br />
+    <label for="Email">Email</label>
+
+    <input
+      pInputText
+      type="email"
+      id="email"
+      class="form-control"
+      placeholder="email"
+      name="email"
+      formControlName="email"
+    />
+    <p-message
+      severity="error"
+      text="email is required"
+      *ngIf="!form.controls['email'].valid && form.controls['email'].touched"
+    ></p-message>
+
+    <br />
+    <label for="mobileNumber">Mobile Number</label>
+
+    <input
+      pInputText
+      type="mobileNumber"
+      id="mobileNumber"
+      class="form-control"
+      placeholder="mobileNumber"
+      name="mobileNumber"
+      formControlName="mobileNumber"
+      pattern="[0-9]*"
+    />
+    <p-message
+      severity="error"
+      text="mobile Number is required and only numbers"
+      *ngIf="
+        !form.controls['mobileNumber'].valid &&
+        form.controls['mobileNumber'].touched
+      "
+    ></p-message>
+  </div>
+  <button
+    style="margin-top: 5px; margin-bottom: 5px"
+    type="button"
+    class="btn btn-primary btn-sm"
+    (click)="addNewSection()"
+  >
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New
+    Experience
+  </button>
+  <div class="nested_form" formArrayName="experienceInfoList">
+    <form
+      class="nested_form_section"
+      *ngFor="let item of experiencesArray().controls; let i = index"
+      [formGroup]="toFormGroup(item)"
+    >
+      <label for="companyName">Company Name</label>
+      <input
+        pInputText
+        type="text"
+        id="companyName"
+        class="form-control"
+        placeholder="Company Name"
+        name="companyName"
+        formControlName="companyName"
+        maxlength="20"
+        required
+      />
+      <p-message
+        severity="error"
+        text="company Name is required"
+        *ngIf="
+          !toFormGroup(item).controls['companyName'].valid &&
+          toFormGroup(item).controls['companyName'].touched
+        "
+      ></p-message>
+      <br />
+      <label for="companyWorkField">Company field</label>
+      <input
+        pInputText
+        type="text"
+        id="companyWorkField"
+        class="form-control"
+        placeholder="companyWorkField"
+        name="companyWorkField"
+        formControlName="companyWorkField"
+      />
+      <p-message
+        severity="error"
+        text="companyWorkField Name is required"
+        *ngIf="
+          !toFormGroup(item).controls['companyWorkField'].valid &&
+          toFormGroup(item).controls['companyWorkField'].touched
+        "
+      ></p-message>
+
+      <br />
+      <label for="cityName">City Name</label>
+      <input
+        pInputText
+        type="text"
+        id="cityName"
+        class="form-control"
+        placeholder="cityName"
+        name="cityName"
+        formControlName="cityName"
+      />
+      <p-message
+        severity="error"
+        text="cityName Name is required"
+        *ngIf="
+          !toFormGroup(item).controls['cityName'].valid &&
+          toFormGroup(item).controls['cityName'].touched
+        "
+      ></p-message>
+
+      <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteSection(i)"></button>
+    </form>
+
+
+  </div>
+
+  <button type="submit" class="btn btn-success">Submit</button>
+  <button type="button" class="btn btn-basic">Cancel</button>
+</form>

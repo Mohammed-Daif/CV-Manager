@@ -1,0 +1,43 @@
+<a routerLink="/cv"><button pButton pRipple type="button" icon="pi pi-step-backward-alt" class="p-button-rounded p-button-text"></button></a>
+
+<div class="container">
+    <div class="header">
+      <div class="full-name">
+        <span class="first-name">{{  data?.name}}</span> 
+       
+      </div>
+      <div class="contact-info">
+        <span class="email">Email: </span>
+        <span class="email-val">{{  data?.email}}</span>
+        <span class="separator"></span>
+        <span class="phone">Phone: </span>
+        <span class="phone-val">{{  data?.mobileNumber}}</span>
+        <br>
+        <br>
+        <span class="email">Full Name: </span>
+        <span class="email-val">{{  data?.fullName}}</span>
+        <span class="separator"></span>
+        <span class="phone">City: </span>
+        <span class="phone-val">{{  data?.cityName}}</span>
+      </div>
+      
+     
+    </div>
+     <div class="details">
+      <div class="section">
+        <div class="section__title">Experience</div>
+        <div  class="section__list">
+          <div *ngFor="let item of data?.experienceInfoList, let i = index" class="section__list-item">
+            <div [ngClass]="i+1 % 2 ? 'left': 'right'">
+              <div class="name">{{ item.companyName }}</div>
+              <div class="addr">{{ item.companyWorkField }}</div>
+              <div class="duration">{{ item.cityName }}</div>
+            </div>
+          </div>
+            
+  
+        </div>
+      </div>
+      
+       </div>
+    </div>

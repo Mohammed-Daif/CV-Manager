@@ -1,0 +1,16 @@
+:host{
+    width: 100%;
+    height: 100vh;
+}
+.nested_form{
+display: flex;
+flex-direction: column;
+align-items: center;
+
+}
+.nested_form_section{
+display: flex;
+align-content: space-between;
+padding: 5px;
+margin: 8px;
+}

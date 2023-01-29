@@ -1,0 +1,20 @@
+<app-table
+  [entities]="data"
+  [cols]="[
+    { field: 'name', header: 'name' },
+    { field: 'fullName', header: 'full Name' },
+    { field: 'email', header: 'Email' },
+    { field: 'mobileNumber', header: 'mobile Number' },
+    { field: 'cityName', header: 'City' },
+    { field: 'companies', header: 'Co. Count' }
+  ]"
+  (onView)="handelView($event)"
+  (onEdit)="handelEdit($event)"
+  (onDelete)="handelDelete($event)"
+  (onNew)="handelNew()"
+  (onPaginate)="handelPageChange($event)"
+></app-table>
+<p-confirmDialog
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+></p-confirmDialog>
